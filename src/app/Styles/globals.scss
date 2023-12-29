@@ -3,16 +3,14 @@
 @tailwind utilities;
 html {
     body {
-        position: relative;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        height: 100vh;
         .container {
             width: min(100% - 40px, 1260px);
             margin-inline: auto;
         }
-        #app {
-            display: grid;
-            grid-template-rows: auto 1fr auto;
-            height: 100vh;
-        }
+
         // Scroll-bar
         &::-webkit-scrollbar {
             background-color: #fff;
