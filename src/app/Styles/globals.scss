@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+html {
+    body {
+        position: relative;
+        .container {
+            width: min(100% - 40px, 1260px);
+            margin-inline: auto;
+        }
+        #app {
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            height: 100vh;
+        }
+        // Scroll-bar
+        &::-webkit-scrollbar {
+            background-color: #fff;
+            width: 10px;
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color: rgba($color: #ccc, $alpha: 1);
+            border-radius: 10px;
+            border: 2px solid #fff;
+        }
+    }
+}
