@@ -1,0 +1,36 @@
+.navBar {
+    padding: 20px 0px;
+    header {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .wrapper {
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        align-items: center;
+        justify-content: space-between;
+        .nav {
+            display: grid;
+            grid-template-columns: repeat(2, auto);
+            align-items: center;
+            grid-column-gap: 50px;
+            .logo {
+                display: grid;
+                grid-column-gap: 10px;
+                grid-template-columns: repeat(2, auto);
+                justify-content: start;
+                align-items: center;
+            }
+            ul {
+                grid-template-columns: repeat(3, auto);
+                grid-column-gap: 20px;
+            }
+        }
+        .actions {
+            display: grid;
+            align-items: center;
+            grid-column-gap: 20px;
+            grid-template-columns: repeat(2, auto);
+        }
+    }
+}

@@ -6,8 +6,11 @@ import { Header } from "./Components/Header/header";
 import { Footer } from "./Components/Footer/footer";
 // Font
 import { Inter } from "next/font/google";
-const inter = Inter({ subsets: ["latin"] });
-
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+});
+import { NextUiProvider } from "@/providers/NextUiProvider";
 export const metadata: Metadata = {
   title: "TaxPal",
   description: "",
@@ -20,10 +23,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
-        <Header />
-        <main>{children}</main>
-        <Footer />
+      <body style={inter.style}>
+        <NextUiProvider>
+          <div id="app">
+            <Header />
+            <main>{children}</main>
+            <Footer />
+          </div>
+        </NextUiProvider>
       </body>
     </html>
   );

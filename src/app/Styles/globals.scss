@@ -1,16 +1,16 @@
 @tailwind base;
-@tailwind components;
 @tailwind utilities;
 html {
     body {
-        display: grid;
-        grid-template-rows: auto 1fr auto;
-        height: 100vh;
         .container {
-            width: min(100% - 40px, 1260px);
+            width: min(100% - 40px, 1220px);
             margin-inline: auto;
         }
-
+        #app {
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            height: 300vh;
+        }
         // Scroll-bar
         &::-webkit-scrollbar {
             background-color: #fff;
