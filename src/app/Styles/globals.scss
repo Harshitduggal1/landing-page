@@ -14,7 +14,7 @@ html {
         #app {
             display: grid;
             grid-template-rows: auto 1fr auto;
-            height: 300vh;
+            height: 100vh;
         }
         // Scroll-bar
         &::-webkit-scrollbar {

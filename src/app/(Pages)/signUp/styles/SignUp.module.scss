@@ -1,0 +1,16 @@
+.signUp {
+    .wrapper {
+        display: grid;
+        grid-template-columns: 600px 1fr;
+
+        .wrapperForm {
+            .logo {
+                display: grid;
+                grid-column-gap: 10px;
+                grid-template-columns: repeat(2, auto);
+                justify-content: start;
+                align-items: center;
+            }
+        }
+    }
+}
