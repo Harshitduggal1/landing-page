@@ -1,5 +1,6 @@
 .navBar {
-    padding: 20px 0px;
+    // padding: 20px 0px;
+
     header {
         padding-left: 0px;
         padding-right: 0px;
@@ -23,7 +24,7 @@
             }
             ul {
                 grid-template-columns: repeat(3, auto);
-                grid-column-gap: 20px;
+                grid-column-gap: 10px;
             }
         }
         .actions {

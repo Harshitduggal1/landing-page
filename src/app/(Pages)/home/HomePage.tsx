@@ -1,16 +1,9 @@
-// React
-import { FC } from "react";
-// Styles
-import s from "./styles/HomePage.module.scss";
+import { Hero } from "./components/hero/Hero";
 
-type THomePage = {};
-
-export const HomePage: FC = ({}) => {
+export const HomePage = ({}) => {
   return (
-    <section className={""}>
-      <div className="container">
-        <section></section>
-      </div>
-    </section>
+    <>
+      <Hero />
+    </>
   );
 };

@@ -1,7 +1,12 @@
+@import "./keyframes.scss";
 @tailwind base;
 @tailwind utilities;
 html {
     body {
+        .navbarMenu {
+            opacity: 0;
+            animation: navbarMenu 0.3s ease forwards;
+        }
         .container {
             width: min(100% - 40px, 1220px);
             margin-inline: auto;

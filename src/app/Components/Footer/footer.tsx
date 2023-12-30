@@ -1,3 +1,4 @@
+"use client";
 // React
 import { FC } from "react";
 // Styles
@@ -7,7 +8,8 @@ import { FaTwitter, FaGithub } from "react-icons/fa";
 // Next
 import Image from "next/image";
 import Link from "next/link";
-
+// NextUI
+import { Tooltip } from "@nextui-org/react";
 export const Footer: FC = ({}) => {
   const getFullYear = new Date().getFullYear();
   const DATA_LINKS = [
@@ -47,12 +49,16 @@ export const Footer: FC = ({}) => {
               Copyright © {getFullYear} TaxPal. All rights reserved.
             </p>
             <div className={s.social}>
-              <Link className="text-slate-400 hover:text-slate-600" href={""}>
-                <FaTwitter size={22} />
-              </Link>
-              <Link className="text-slate-400 hover:text-slate-600" href={""}>
-                <FaGithub size={22} />
-              </Link>
+              <Tooltip content="Twitter" size="sm">
+                <Link className="text-slate-400 hover:text-slate-600" href={""}>
+                  <FaTwitter size={22} />
+                </Link>
+              </Tooltip>
+              <Tooltip content="GitHub" size="sm">
+                <Link className="text-slate-400 hover:text-slate-600" href={""}>
+                  <FaGithub size={22} />
+                </Link>
+              </Tooltip>
             </div>
           </div>
         </div>

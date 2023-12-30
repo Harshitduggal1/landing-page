@@ -1,25 +1,29 @@
 "use client";
 // React
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 // Styles
 import s from "./styles/Header.module.scss";
 // Next
 import Image from "next/image";
 import Link from "next/link";
-// Icons
-import { AlignJustify, X } from "lucide-react";
 // NextUI
 import {
   Navbar,
   NavbarMenuToggle,
   NavbarMenu,
   NavbarMenuItem,
+  Button,
 } from "@nextui-org/react";
-
-type THeader = {};
+// Font
+import { Lexend } from "next/font/google";
+const font = Lexend({
+  subsets: ["latin"],
+  weight: ["500"],
+});
 
 export const Header: FC = ({}) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScroll, setScroll] = useState(false);
   const DATA_LINKS = [
     { value: "Features", href: "" },
     { value: "Testimonials", href: "" },
@@ -32,15 +36,29 @@ export const Header: FC = ({}) => {
     { value: "Pricing", href: "" },
     { value: "Sign In", href: "" },
   ];
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY != 0) {
+        setScroll(true);
+      } else {
+        setScroll(false);
+      }
+    });
+  }, [isScroll]);
   return (
     <>
       <Navbar
+        shouldHideOnScroll
         disableAnimation
         onMenuOpenChange={setIsMenuOpen}
         isMenuOpen={isMenuOpen}
-        shouldHideOnScroll
         maxWidth="full"
-        className={`${s.navBar}`}
+        height={"4.5em"}
+        className={`${s.navBar} ${
+          isScroll || isMenuOpen
+            ? "shadow-sm pt-0 pb-0"
+            : "shadow-none md:pt-4 md:pb-4"
+        }   transition-all`}
       >
         <div className="container">
           <section className={s.wrapper}>
@@ -50,7 +68,7 @@ export const Header: FC = ({}) => {
                 className={`${s.logo} hover:opacity-80 transition-opacity`}
               >
                 <Image src={"./Logo.svg"} width={40} height={40} alt="Logo" />
-                <h5 className="text-black font-semibold text-lg">
+                <h5 style={font.style} className="text-black  text-lg">
                   Tax<span className="text-blue ">Pal</span>
                 </h5>
               </Link>
@@ -73,31 +91,31 @@ export const Header: FC = ({}) => {
               >
                 Sign In
               </Link>
-              <Link
-                className="bg-blue text-white py-3 px-4 rounded-full text-sm font-medium"
+              <Button
+                as={Link}
+                className="bg-blue text-white py-2 px-3 rounded-full text-sm font-medium hover:bg-white hover:text-blue  transition-all border-2 border-blue shadow-md"
                 href={"/register"}
               >
                 Get started{" "}
                 <span className="hidden lg:inline-block">today</span>
-              </Link>
+              </Button>
               {/* BurgerMenu */}
-              <NavbarMenuToggle
-                icon={
-                  isMenuOpen ? (
-                    <X color="#0F172A" />
-                  ) : (
-                    <AlignJustify color="#0F172A" />
-                  )
-                }
-                className="sm:hidden"
-              />
+              <NavbarMenuToggle className="sm:hidden" />
             </div>
           </section>
         </div>
-        <NavbarMenu className="pt-8 border-t-1 border-blue">
+        {/* ToggleMenu */}
+        <NavbarMenu className={`navbarMenu pt-5 bg-slate-50`}>
           {DATA_TOGGLE_MENU.map((item, i) => (
             <NavbarMenuItem key={i}>
-              <Link className="w-full" href="#">
+              <Link
+                className={`w-full  ${
+                  i === DATA_TOGGLE_MENU.length - 1
+                    ? "text-blue"
+                    : "text-slate-700"
+                }`}
+                href="#"
+              >
                 {item.value}
               </Link>
             </NavbarMenuItem>
