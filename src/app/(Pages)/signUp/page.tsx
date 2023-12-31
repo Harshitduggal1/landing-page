@@ -9,7 +9,8 @@ import { IoEyeOutline, IoEyeOffOutline } from "react-icons/io5";
 import Image from "next/image";
 import Link from "next/link";
 // NextUI
-import { Input, Button } from "@nextui-org/react";
+import { Input, Button, SelectItem, Select } from "@nextui-org/react";
+
 // Font
 import { Lexend } from "next/font/google";
 const font = Lexend({
@@ -18,12 +19,19 @@ const font = Lexend({
 });
 const SignUp: FC = ({}) => {
   const [isVisible, setIsVisible] = useState(false);
-
+  const DATA_SELECT = [
+    { value: "AltaVista search" },
+    { value: "Super Bowl commercial" },
+    { value: "Our route 34 city bus ad" },
+    { value: "The `Never Use This` podcast " },
+  ];
   return (
-    <section className={`${s.signUp} w-full h-screen`}>
+    <section
+      className={`${s.signUp} w-full h-full bg-[url('/bgSignIn.svg')] bg-no-repeat bg-center bg-cover`}
+    >
       <section className={`${s.wrapper} h-full `}>
         <div
-          className={`${s.wrapperForm} px-28 py-28 shadow-2xl shadow-black/50 relative z-10`}
+          className={`${s.wrapperForm} bg-white px-5 md:px-24 py-12 shadow-2xl shadow-black/50 relative z-10`}
         >
           <Link
             href={"/"}
@@ -44,26 +52,65 @@ const SignUp: FC = ({}) => {
             </Link>{" "}
             to your account.
           </p>
-          <form className="w-full mt-20">
+          <form className="w-full mt-14">
+            <div className={`${s.name} `}>
+              <Input
+                fullWidth
+                type="text"
+                label="First Name"
+                labelPlacement={"outside"}
+                placeholder=" "
+                radius="sm"
+                color="primary"
+                classNames={{
+                  innerWrapper: "bg-transparent",
+                  inputWrapper: [
+                    "text-blue",
+                    "bg-slate-100",
+                    "border-1",
+                    "border-gray/20",
+                  ],
+                  label: ["text-sm", "font-medium", "text-black"],
+                }}
+              />
+              <Input
+                fullWidth
+                type="text"
+                label="Last name"
+                labelPlacement={"outside"}
+                placeholder=" "
+                radius="sm"
+                color="primary"
+                classNames={{
+                  innerWrapper: "bg-transparent",
+                  inputWrapper: [
+                    "text-blue",
+                    "bg-slate-100",
+                    "border-1",
+                    "border-gray/20",
+                  ],
+                  label: ["text-sm", "font-medium", "text-black"],
+                }}
+              />
+            </div>
             <Input
+              color="primary"
               fullWidth
               type="email"
               label="Email"
               labelPlacement={"outside"}
               placeholder=" "
               radius="sm"
-              color="primary"
               classNames={{
-                innerWrapper: "bg-transparent",
                 inputWrapper: [
                   "text-blue",
                   "bg-slate-100",
                   "border-1",
                   "border-gray/20",
                 ],
-                label: ["text-sm", "font-medium", "text-blue"],
+                label: ["text-sm", "font-medium", "text-black"],
               }}
-              className="mb-16 "
+              className=""
             />
             <Input
               color="primary"
@@ -88,12 +135,34 @@ const SignUp: FC = ({}) => {
                   "bg-slate-100",
                   "border-1",
                   "border-gray/20",
-                  "hover:bg-default-200/70",
                 ],
-                label: ["text-sm", "font-medium", "text-blue"],
+                label: ["text-sm", "font-medium", "text-black"],
               }}
-              className="mb-10 "
+              className=""
             />
+            <Select
+              color="primary"
+              placeholder=" "
+              label="How did you hear about us?"
+              labelPlacement={"outside"}
+              size="sm"
+              classNames={{
+                selectorIcon: "text-gray",
+                popoverContent: "text-blue",
+                trigger: [
+                  "g-blue",
+                  "py-5",
+                  "bg-slate-100",
+                  "border-1",
+                  "border-gray/20",
+                ],
+                label: ["text-sm", "font-medium", "text-black"],
+              }}
+            >
+              {DATA_SELECT.map((item, i) => (
+                <SelectItem key={i}>{item.value}</SelectItem>
+              ))}
+            </Select>
             <Button
               fullWidth
               type="submit"
@@ -104,7 +173,7 @@ const SignUp: FC = ({}) => {
             </Button>
           </form>
         </div>
-        <figure className="relative z-0 bg-[url('/bgSignIn.svg')] bg-no-repeat bg-center bg-cover"></figure>
+        <figure className="w-full h-full z-0 bg-[url('/bgSignIn.svg')] bg-no-repeat bg-center bg-cover"></figure>
       </section>
     </section>
   );

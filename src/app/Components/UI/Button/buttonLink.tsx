@@ -1,5 +1,6 @@
 import { FC } from "react";
-import { Link, Button } from "@nextui-org/react";
+import { Button } from "@nextui-org/react";
+import Link from "next/link";
 type TButtonLink = {
   value: string;
   href: string;

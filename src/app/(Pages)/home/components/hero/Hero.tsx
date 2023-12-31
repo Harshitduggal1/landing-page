@@ -64,8 +64,9 @@ export const Hero: FC = ({}) => {
               <ButtonLink
                 value="Get 6 months free"
                 styles=" shadow-md bg-black text-white font-medium rounded-full mr-5"
-                href=""
+                href="/signUp"
               />
+
               <Button
                 target="blank"
                 href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
@@ -81,9 +82,15 @@ export const Hero: FC = ({}) => {
             <h5 style={font.style} className="text-black font-normal">
               Trusted by these six companies so far
             </h5>
-            <div className="mt-7">
+            <div className="my-10">
               {DATA_COMPANIES.map((item, i) => (
-                <Image src={item.pathImg} alt="" width={140} height={150} />
+                <Image
+                  key={i}
+                  src={item.pathImg}
+                  alt="Image"
+                  width={140}
+                  height={150}
+                />
               ))}
             </div>
           </div>

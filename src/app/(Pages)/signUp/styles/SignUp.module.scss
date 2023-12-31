@@ -2,7 +2,6 @@
     .wrapper {
         display: grid;
         grid-template-columns: 600px 1fr;
-
         .wrapperForm {
             .logo {
                 display: grid;
@@ -11,6 +10,31 @@
                 justify-content: start;
                 align-items: center;
             }
+            form {
+                display: grid;
+                grid-row-gap: 30px;
+                .name {
+                    display: grid;
+                    grid-template-columns: repeat(2, auto);
+                    grid-column-gap: 20px;
+                }
+            }
+        }
+    }
+}
+@media screen and (width <= 1024px) {
+    .signUp {
+        .wrapper {
+            grid-template-columns: 600px;
+            justify-content: center;
+        }
+    }
+}
+@media screen and (width <= 768px) {
+    .signUp {
+        .wrapper {
+            grid-template-columns: 1fr;
+            justify-content: center;
         }
     }
 }

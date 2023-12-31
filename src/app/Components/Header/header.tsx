@@ -52,6 +52,7 @@ export const Header: FC = ({}) => {
     <>
       {!hideNavigation && (
         <Navbar
+          isBlurred={!isMenuOpen}
           shouldHideOnScroll
           disableAnimation
           onMenuOpenChange={setIsMenuOpen}
@@ -62,7 +63,7 @@ export const Header: FC = ({}) => {
             isScroll || isMenuOpen
               ? "shadow-sm pt-0 pb-0"
               : "shadow-none md:pt-4 md:pb-4"
-          }   transition-all`}
+          }   `}
         >
           <div className="container">
             <section className={s.wrapper}>

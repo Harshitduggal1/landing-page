@@ -20,10 +20,12 @@ const SignIn: FC = ({}) => {
   const [isVisible, setIsVisible] = useState(false);
 
   return (
-    <section className={`${s.signIn} w-full h-screen`}>
+    <section
+      className={`${s.signIn} w-full h-screen bg-[url('/bgSignIn.svg')] bg-no-repeat bg-center bg-cover`}
+    >
       <section className={`${s.wrapper} h-full `}>
         <div
-          className={`${s.wrapperForm} px-28 py-28 shadow-2xl shadow-black/50 relative z-10`}
+          className={`${s.wrapperForm} h-screen bg-white px-5 md:px-24 py-12 shadow-2xl shadow-black/50 relative z-10`}
         >
           <Link
             href={"/"}
@@ -61,9 +63,9 @@ const SignIn: FC = ({}) => {
                   "border-1",
                   "border-gray/20",
                 ],
-                label: ["text-sm", "font-medium", "text-blue"],
+                label: ["text-sm", "font-medium", "text-black"],
               }}
-              className="mb-16 "
+              className=""
             />
             <Input
               color="primary"
@@ -90,9 +92,9 @@ const SignIn: FC = ({}) => {
                   "border-gray/20",
                   "hover:bg-default-200/70",
                 ],
-                label: ["text-sm", "font-medium", "text-blue"],
+                label: ["text-sm", "font-medium", "text-black"],
               }}
-              className="mb-10 "
+              className=""
             />
             <Button
               fullWidth

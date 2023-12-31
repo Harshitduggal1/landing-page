@@ -1,6 +1,7 @@
 .navBar {
-    // padding: 20px 0px;
-
+    transition:
+        padding 0.2s linear,
+        box-shadow 0.2s ease;
     header {
         padding-left: 0px;
         padding-right: 0px;
