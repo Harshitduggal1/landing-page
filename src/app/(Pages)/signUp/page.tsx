@@ -5,6 +5,7 @@ import { FC, useState } from "react";
 import s from "./styles/SignUp.module.scss";
 // Icons
 import { IoEyeOutline, IoEyeOffOutline } from "react-icons/io5";
+import { GoArrowRight } from "react-icons/go";
 // Next
 import Image from "next/image";
 import Link from "next/link";
@@ -31,7 +32,7 @@ const SignUp: FC = ({}) => {
     >
       <section className={`${s.wrapper} h-full `}>
         <div
-          className={`${s.wrapperForm} bg-white px-5 md:px-24 py-12 shadow-2xl shadow-black/50 relative z-10`}
+          className={`${s.wrapperForm} h-full bg-white px-5 md:px-24 py-12 shadow-2xl shadow-black/50 relative z-10`}
         >
           <Link
             href={"/"}
@@ -166,10 +167,11 @@ const SignUp: FC = ({}) => {
             <Button
               fullWidth
               type="submit"
-              className="bg-blue text-white font-semibold shadow-md tracking-tight"
+              className={`${s.submitBtn} bg-blue text-white font-semibold shadow-md tracking-tight`}
               radius="full"
             >
               Sign Up
+              <GoArrowRight size={16} />
             </Button>
           </form>
         </div>

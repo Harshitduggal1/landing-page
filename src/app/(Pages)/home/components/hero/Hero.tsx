@@ -9,9 +9,9 @@ import { ButtonLink } from "@/app/Components/UI/Button/buttonLink";
 import { Button } from "@nextui-org/react";
 // Next
 import Link from "next/link";
+import Image from "next/image";
 // Font
 import { Lexend } from "next/font/google";
-import Image from "next/image";
 const font = Lexend({
   subsets: ["latin"],
   weight: ["400", "500"],

@@ -18,6 +18,14 @@
                     grid-template-columns: repeat(2, auto);
                     grid-column-gap: 20px;
                 }
+                .submitBtn {
+                    &:hover {
+                        svg {
+                            transition: all 0.2s ease;
+                            transform: translate(3px, 0px);
+                        }
+                    }
+                }
             }
         }
     }
