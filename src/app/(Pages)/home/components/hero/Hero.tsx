@@ -56,7 +56,7 @@ export const Hero: FC = ({}) => {
               </span>{" "}
               for small businesses.
             </h1>
-            <p className="mt-6 mx-auto max-w-xl text-lg tracking-tight ">
+            <p className="mt-6 mx-auto max-w-xl text-lg tracking-tight text-slate-700">
               Most bookkeeping software is accurate, but hard to use. We make
               the opposite trade-off, and hope you don’t get audited.
             </p>

@@ -1,0 +1,28 @@
+.reviews {
+    li {
+        list-style: none;
+    }
+    .wrapper {
+        .header {
+            h2 {
+                font-size: 40px;
+            }
+        }
+        .cards {
+            li {
+                article {
+                    .info {
+                        display: grid;
+                        grid-template-columns: 1fr auto;
+                        justify-content: space-between;
+                        align-items: center;
+                        div {
+                            display: grid;
+                            grid-row-gap: 5px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
