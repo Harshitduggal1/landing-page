@@ -1,1 +1,1 @@
-![Image](./public/bgBanner.svg)
+![Image](./public/TaxPalBanner.png)
