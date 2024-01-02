@@ -1,5 +1,5 @@
-# TaxPal | Landing Page
+# [TaxPal | Landing Page](https://tax-pal-landing-page.vercel.app/)
 
 NextJs | TypeScript | TailwindCSS | SCSS | NextUI
-[Go to TaxPal](https://tax-pal-landing-page.vercel.app/)
+
 ![Image](./public/TaxPalBanner.png)
