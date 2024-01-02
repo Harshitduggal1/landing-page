@@ -15,6 +15,8 @@ import {
   NavbarMenuItem,
   Button,
 } from "@nextui-org/react";
+// ScrollLink
+import { Link as ScrollLink } from "react-scroll";
 // Font
 import { Lexend } from "next/font/google";
 const font = Lexend({
@@ -27,18 +29,20 @@ export const Header: FC = ({}) => {
   let hideNavigation = pathName === "signIn" || pathName === "signUp";
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScroll, setScroll] = useState(false);
-  const DATA_LINKS = [
-    { value: "Features", href: "" },
-    { value: "Testimonials", href: "" },
-    { value: "Pricing", href: "" },
-  ];
 
-  const DATA_TOGGLE_MENU = [
-    { value: "Features", href: "" },
-    { value: "Testimonials", href: "" },
-    { value: "Pricing", href: "" },
-    { value: "Sign In", href: "" },
+  // Data
+  const DATA_LINKS = [
+    { value: "Features", href: "features" },
+    { value: "Testimonials", href: "testimonials" },
+    { value: "Pricing", href: "price" },
   ];
+  const DATA_TOGGLE_MENU = [
+    { value: "Features", href: "features" },
+    { value: "Testimonials", href: "testimonials" },
+    { value: "Pricing", href: "price" },
+    { value: "Sign In", href: "/signIn" },
+  ];
+  // SetScroll
   useEffect(() => {
     window.addEventListener("scroll", () => {
       if (window.scrollY != 0) {
@@ -48,6 +52,7 @@ export const Header: FC = ({}) => {
       }
     });
   }, [isScroll]);
+
   return (
     <>
       {!hideNavigation && (
@@ -59,7 +64,7 @@ export const Header: FC = ({}) => {
           isMenuOpen={isMenuOpen}
           maxWidth="full"
           height={"4.5em"}
-          className={`${s.navBar} ${
+          className={` ${s.navBar} ${
             isScroll || isMenuOpen
               ? "shadow-sm pt-0 pb-0"
               : "shadow-none md:pt-4 md:pb-4"
@@ -68,24 +73,31 @@ export const Header: FC = ({}) => {
           <div className="container">
             <section className={s.wrapper}>
               <nav className={s.nav}>
-                <Link
-                  href={"/"}
-                  className={`${s.logo} hover:opacity-80 transition-opacity`}
+                <ScrollLink
+                  onClick={() => setIsMenuOpen(false)}
+                  spy={true}
+                  smooth={true}
+                  duration={800}
+                  to={"top"}
+                  className={`${s.logo} hover:opacity-80 transition-opacity cursor-pointer`}
                 >
                   <Image src={"./Logo.svg"} width={40} height={40} alt="Logo" />
                   <h5 style={font.style} className="text-black  text-lg">
                     Tax<span className="text-blue ">Pal</span>
                   </h5>
-                </Link>
+                </ScrollLink>
                 <ul className="hidden md:grid">
                   {DATA_LINKS.map((link, i) => (
-                    <Link
+                    <ScrollLink
                       key={i}
-                      className="transition-all text-sm text-slate-700 hover:text-blue hover:bg-slate-100 px-3 py-2 rounded-lg"
-                      href={link.href}
+                      className={`transition-all text-sm  hover:text-blue hover:bg-slate-100 px-3 py-2 rounded-lg cursor-pointer`}
+                      to={link.href}
+                      spy={true}
+                      smooth={true}
+                      duration={800}
                     >
                       {link.value}
-                    </Link>
+                    </ScrollLink>
                   ))}
                 </ul>
               </nav>
@@ -113,16 +125,20 @@ export const Header: FC = ({}) => {
           <NavbarMenu className={`navbarMenu pt-5 bg-slate-50`}>
             {DATA_TOGGLE_MENU.map((item, i) => (
               <NavbarMenuItem key={i}>
-                <Link
+                <ScrollLink
+                  onClick={() => setIsMenuOpen(false)}
+                  spy={true}
+                  smooth={true}
+                  duration={800}
                   className={`w-full  ${
                     i === DATA_TOGGLE_MENU.length - 1
                       ? "text-blue"
                       : "text-slate-700"
                   }`}
-                  href="#"
+                  to={item.href}
                 >
                   {item.value}
-                </Link>
+                </ScrollLink>
               </NavbarMenuItem>
             ))}
           </NavbarMenu>

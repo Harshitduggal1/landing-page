@@ -69,7 +69,7 @@ export const Reviews: FC = ({}) => {
     },
   ];
   return (
-    <section className={`${s.reviews} bg-slate-50`}>
+    <section name="testimonials" className={`${s.reviews} bg-slate-50`}>
       <div className="container">
         <section className={`${s.wrapper} py-20 sm:py-32`}>
           <div className={`${s.header} text-left md:text-center mb-20`}>

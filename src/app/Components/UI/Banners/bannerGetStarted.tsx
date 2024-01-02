@@ -14,7 +14,6 @@ type TBannerGetStarted = {};
 
 export const BannerGetStarted: FC = ({}) => {
   return (
-    // bg-[url('/bgBanner.svg')] bg-no-repeat bg-center bg-cover
     <section className={"relative"}>
       <Image
         src={"/bgBanner.svg"}

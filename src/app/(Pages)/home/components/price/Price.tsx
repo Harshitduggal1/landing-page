@@ -53,10 +53,12 @@ export const Price: FC = ({}) => {
     },
   ];
   return (
-    <section className={`${s.price} bg-slate-900`}>
-      <div className="container">
+    <section name="price" className={`${s.price} bg-slate-900`}>
+      <div className={`${s.container}`}>
         <section className={`${s.wrapper} py-20 sm:py-32`}>
-          <div className={`${s.header} text-left md:text-center mb-20`}>
+          <div
+            className={`${s.header} text-left md:text-center mb-20 px-5 md:px-0`}
+          >
             <h2
               style={font.style}
               className="relative text-white mb-5 tracking-tight font-normal"

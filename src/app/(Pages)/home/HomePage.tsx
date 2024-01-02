@@ -3,6 +3,7 @@ import { BannerGetStarted } from "@/app/Components/UI/Banners/bannerGetStarted";
 import { Hero } from "./components/hero/Hero";
 import { Reviews } from "./components/reviews/Reviews";
 import { Price } from "./components/price/Price";
+import { FAQ } from "./components/faq/FAQ";
 
 export const HomePage = ({}) => {
   return (
@@ -11,6 +12,7 @@ export const HomePage = ({}) => {
       <BannerGetStarted />
       <Reviews />
       <Price />
+      <FAQ />
     </>
   );
 };

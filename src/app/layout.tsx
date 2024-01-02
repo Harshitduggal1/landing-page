@@ -24,13 +24,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body style={inter.style}>
-        <NextUiProvider>
-          <div id="app">
+        <div id="app" name="top">
+          <NextUiProvider>
             <Header />
             <main>{children}</main>
             <Footer />
-          </div>
-        </NextUiProvider>
+          </NextUiProvider>
+        </div>
       </body>
     </html>
   );
