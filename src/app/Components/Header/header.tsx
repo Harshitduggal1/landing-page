@@ -29,6 +29,7 @@ export const Header: FC = ({}) => {
   let hideNavigation = pathName === "signIn" || pathName === "signUp";
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScroll, setScroll] = useState(false);
+  const [isActive, setActive] = useState(false);
 
   // Data
   const DATA_LINKS = [
@@ -89,6 +90,10 @@ export const Header: FC = ({}) => {
                 <ul className="hidden md:grid">
                   {DATA_LINKS.map((link, i) => (
                     <ScrollLink
+                      activeStyle={{
+                        backgroundColor: "#f1f5f9",
+                        color: "#2563EB",
+                      }}
                       key={i}
                       className={`transition-all text-sm  hover:text-blue hover:bg-slate-100 px-3 py-2 rounded-lg cursor-pointer`}
                       to={link.href}
@@ -126,11 +131,13 @@ export const Header: FC = ({}) => {
             {DATA_TOGGLE_MENU.map((item, i) => (
               <NavbarMenuItem key={i}>
                 <ScrollLink
+                  // activeStyle={{ color: "#2563EB" }}
+                  activeClass="text-red-700"
                   onClick={() => setIsMenuOpen(false)}
                   spy={true}
                   smooth={true}
                   duration={800}
-                  className={`w-full  ${
+                  className={`w-full ${isActive ? "bg-red-700" : ""}  ${
                     i === DATA_TOGGLE_MENU.length - 1
                       ? "text-blue"
                       : "text-slate-700"

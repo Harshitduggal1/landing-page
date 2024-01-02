@@ -56,6 +56,7 @@ const SignUp: FC = ({}) => {
           <form className="w-full mt-14">
             <div className={`${s.name} `}>
               <Input
+                style={{ fontSize: "16px" }}
                 fullWidth
                 type="text"
                 label="First Name"
@@ -95,6 +96,7 @@ const SignUp: FC = ({}) => {
               />
             </div>
             <Input
+              style={{ fontSize: "16px" }}
               color="primary"
               fullWidth
               type="email"
@@ -114,6 +116,7 @@ const SignUp: FC = ({}) => {
               className=""
             />
             <Input
+              style={{ fontSize: "16px" }}
               color="primary"
               endContent={
                 <button type="button" onClick={() => setIsVisible(!isVisible)}>
@@ -157,7 +160,7 @@ const SignUp: FC = ({}) => {
                   "border-1",
                   "border-gray/20",
                 ],
-                label: ["text-sm", "font-medium", "text-black"],
+                label: ["text-sm", "font-medium", "text-black", "pb-2"],
               }}
             >
               {DATA_SELECT.map((item, i) => (

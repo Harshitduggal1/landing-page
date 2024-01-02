@@ -49,6 +49,7 @@ const SignIn: FC = ({}) => {
           </p>
           <form className="w-full mt-20">
             <Input
+              style={{ fontSize: "16px" }}
               fullWidth
               type="email"
               label="Email"
@@ -69,6 +70,7 @@ const SignIn: FC = ({}) => {
               className=""
             />
             <Input
+              style={{ fontSize: "16px" }}
               color="primary"
               endContent={
                 <button type="button" onClick={() => setIsVisible(!isVisible)}>
