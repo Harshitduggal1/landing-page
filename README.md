@@ -1,1 +1,1 @@
-![Image](./bgBanner.svg)
+![Image](./public/bgBanner.svg)
