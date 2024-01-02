@@ -53,7 +53,7 @@ export const Price: FC = ({}) => {
     },
   ];
   return (
-    <section name="price" className={`${s.price} bg-slate-900`}>
+    <section id="price" className={`${s.price} bg-slate-900`}>
       <div className={`${s.container}`}>
         <section className={`${s.wrapper} py-20 sm:py-32`}>
           <div

@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body style={inter.style}>
-        <div id="app" name="top">
+        <div className="app" id="top">
           <NextUiProvider>
             <Header />
             <main>{children}</main>
