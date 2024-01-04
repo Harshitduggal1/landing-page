@@ -61,7 +61,7 @@ export const Price: FC = ({}) => {
           >
             <h2
               style={font.style}
-              className="relative text-white mb-5 tracking-tight font-normal"
+              className="relative text-white mb-5 tracking-tight font-normal text-4xl md:text-5xl"
             >
               <span className="relative whitespace-nowrap lg:whitespace-normal">
                 <svg

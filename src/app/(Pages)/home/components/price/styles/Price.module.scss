@@ -3,11 +3,6 @@
         width: min(100% - 40px, 1220px);
         margin-inline: auto;
         .wrapper {
-            .header {
-                h2 {
-                    font-size: 40px;
-                }
-            }
             .cards {
                 display: grid;
                 grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));

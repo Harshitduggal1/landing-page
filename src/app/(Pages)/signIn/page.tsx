@@ -9,6 +9,7 @@ import { GoArrowRight } from "react-icons/go";
 // Next
 import Image from "next/image";
 import Link from "next/link";
+
 // NextUI
 import { Input, Button } from "@nextui-org/react";
 // Font
@@ -22,7 +23,7 @@ const SignIn: FC = ({}) => {
 
   return (
     <section
-      className={`${s.signIn} w-full h-screen bg-[url('/bgSignIn.svg')] bg-no-repeat bg-center bg-cover`}
+      className={`${s.signIn} w-full h-screen md:bg-[url('/bgSignIn.svg')]  bg-no-repeat bg-center bg-cover`}
     >
       <section className={`${s.wrapper}  `}>
         <div
@@ -65,7 +66,7 @@ const SignIn: FC = ({}) => {
                   "border-1",
                   "border-gray/20",
                 ],
-                label: ["text-sm", "font-medium", "text-black"],
+                label: ["text-sm", "font-normal", "text-slate-500"],
               }}
               className=""
             />
@@ -95,7 +96,7 @@ const SignIn: FC = ({}) => {
                   "border-gray/20",
                   "hover:bg-default-200/70",
                 ],
-                label: ["text-sm", "font-medium", "text-black"],
+                label: ["text-sm", "font-normal", "text-slate-500"],
               }}
               className=""
             />
@@ -110,7 +111,7 @@ const SignIn: FC = ({}) => {
             </Button>
           </form>
         </div>
-        <figure className="w-full h-full z-0 bg-[url('/bgSignUp.svg')] bg-no-repeat bg-center bg-cover"></figure>
+        <figure className="hidden lg:block w-full h-screen z-0 bg-[url('/bgSignIn.svg')] bg-no-repeat bg-center bg-cover"></figure>
       </section>
     </section>
   );

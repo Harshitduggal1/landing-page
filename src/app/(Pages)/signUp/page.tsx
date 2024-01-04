@@ -28,11 +28,11 @@ const SignUp: FC = ({}) => {
   ];
   return (
     <section
-      className={`${s.signUp} w-full h-full bg-[url('/bgSignIn.svg')] bg-no-repeat bg-center bg-cover`}
+      className={`${s.signUp}  w-full h-screen md:bg-[url('/bgSignIn.svg')] bg-no-repeat bg-center bg-cover`}
     >
       <section className={`${s.wrapper} h-full `}>
         <div
-          className={`${s.wrapperForm} h-full bg-white px-5 md:px-24 py-12 shadow-2xl shadow-black/50 relative z-10`}
+          className={`${s.wrapperForm} overflow-y-scroll  h-screen bg-white px-5 md:px-24 py-12 shadow-2xl shadow-black/50 relative z-10`}
         >
           <Link
             href={"/"}
@@ -56,6 +56,7 @@ const SignUp: FC = ({}) => {
           <form className="w-full mt-14">
             <div className={`${s.name} `}>
               <Input
+                isRequired
                 style={{ fontSize: "16px" }}
                 fullWidth
                 type="text"
@@ -72,10 +73,11 @@ const SignUp: FC = ({}) => {
                     "border-1",
                     "border-gray/20",
                   ],
-                  label: ["text-sm", "font-medium", "text-black"],
+                  label: ["text-sm", "font-normal", "text-slate-500"],
                 }}
               />
               <Input
+                isRequired
                 fullWidth
                 type="text"
                 label="Last name"
@@ -91,11 +93,12 @@ const SignUp: FC = ({}) => {
                     "border-1",
                     "border-gray/20",
                   ],
-                  label: ["text-sm", "font-medium", "text-black"],
+                  label: ["text-sm", "font-normal", "text-slate-500"],
                 }}
               />
             </div>
             <Input
+              isRequired
               style={{ fontSize: "16px" }}
               color="primary"
               fullWidth
@@ -111,11 +114,12 @@ const SignUp: FC = ({}) => {
                   "border-1",
                   "border-gray/20",
                 ],
-                label: ["text-sm", "font-medium", "text-black"],
+                label: ["text-sm", "font-normal", "text-slate-500"],
               }}
               className=""
             />
             <Input
+              isRequired
               style={{ fontSize: "16px" }}
               color="primary"
               endContent={
@@ -140,7 +144,7 @@ const SignUp: FC = ({}) => {
                   "border-1",
                   "border-gray/20",
                 ],
-                label: ["text-sm", "font-medium", "text-black"],
+                label: ["text-sm", "font-normal", "text-slate-500"],
               }}
               className=""
             />
@@ -160,7 +164,7 @@ const SignUp: FC = ({}) => {
                   "border-1",
                   "border-gray/20",
                 ],
-                label: ["text-sm", "font-medium", "text-black", "pb-2"],
+                label: ["text-sm", "font-normal", "text-slate-500", "pb-2"],
               }}
             >
               {DATA_SELECT.map((item, i) => (
@@ -178,7 +182,7 @@ const SignUp: FC = ({}) => {
             </Button>
           </form>
         </div>
-        <figure className="w-full h-full z-0 bg-[url('/bgSignIn.svg')] bg-no-repeat bg-center bg-cover"></figure>
+        <figure className="w-full h-full z-0 lg:bg-[url('/bgSignIn.svg')] bg-no-repeat bg-center bg-cover"></figure>
       </section>
     </section>
   );

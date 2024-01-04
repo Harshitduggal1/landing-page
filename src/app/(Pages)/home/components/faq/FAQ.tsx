@@ -75,7 +75,10 @@ export const FAQ: FC = ({}) => {
       <div className="container">
         <section className={`${s.wrapper} relative z-10  py-20 sm:py-32`}>
           <div className={`${s.header} text-left  mb-20`}>
-            <h2 style={font.style} className="text-black mb-5 tracking-tight">
+            <h2
+              style={font.style}
+              className="text-black mb-5 tracking-tight text-4xl md:text-5xl"
+            >
               Frequently asked questions
             </h2>
             <p className="text-lg max-w-screen-sm leading-8 text-slate-700 tracking-tight">

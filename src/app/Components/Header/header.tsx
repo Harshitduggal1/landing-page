@@ -41,7 +41,6 @@ export const Header: FC = ({}) => {
     { value: "Features", href: "features" },
     { value: "Testimonials", href: "testimonials" },
     { value: "Pricing", href: "price" },
-    { value: "Sign In", href: "/signIn" },
   ];
   // SetScroll
   useEffect(() => {
@@ -58,6 +57,7 @@ export const Header: FC = ({}) => {
     <>
       {!hideNavigation && (
         <Navbar
+          className={` ${s.navBar}  shadow-sm shadow-black/10  `}
           isBlurred={!isMenuOpen}
           shouldHideOnScroll
           disableAnimation
@@ -65,22 +65,17 @@ export const Header: FC = ({}) => {
           isMenuOpen={isMenuOpen}
           maxWidth="full"
           height={"4.5em"}
-          className={` ${s.navBar} ${
-            isScroll || isMenuOpen
-              ? "shadow-sm pt-0 pb-0"
-              : "shadow-none md:pt-4 md:pb-4"
-          }   `}
         >
           <div className="container">
             <section className={s.wrapper}>
               <nav className={s.nav}>
                 <ScrollLink
+                  className={`${s.logo} hover:opacity-80 transition-opacity cursor-pointer`}
                   onClick={() => setIsMenuOpen(false)}
                   spy={true}
                   smooth={true}
                   duration={800}
                   to={"top"}
-                  className={`${s.logo} hover:opacity-80 transition-opacity cursor-pointer`}
                 >
                   <Image src={"./Logo.svg"} width={40} height={40} alt="Logo" />
                   <h5 style={font.style} className="text-black  text-lg">
@@ -90,12 +85,12 @@ export const Header: FC = ({}) => {
                 <ul className="hidden md:grid">
                   {DATA_LINKS.map((link, i) => (
                     <ScrollLink
+                      className={`transition-all text-sm  hover:text-blue hover:bg-slate-100 px-3 py-2 rounded-lg cursor-pointer`}
                       activeStyle={{
                         backgroundColor: "#f1f5f9",
                         color: "#2563EB",
                       }}
                       key={i}
-                      className={`transition-all text-sm  hover:text-blue hover:bg-slate-100 px-3 py-2 rounded-lg cursor-pointer`}
                       to={link.href}
                       spy={true}
                       smooth={true}
@@ -131,17 +126,14 @@ export const Header: FC = ({}) => {
             {DATA_TOGGLE_MENU.map((item, i) => (
               <NavbarMenuItem key={i}>
                 <ScrollLink
-                  // activeStyle={{ color: "#2563EB" }}
-                  activeClass="text-red-700"
+                  activeStyle={{
+                    color: "#2563EB",
+                  }}
                   onClick={() => setIsMenuOpen(false)}
                   spy={true}
                   smooth={true}
                   duration={800}
-                  className={`w-full ${isActive ? "bg-red-700" : ""}  ${
-                    i === DATA_TOGGLE_MENU.length - 1
-                      ? "text-blue"
-                      : "text-slate-700"
-                  }`}
+                  className={`w-full`}
                   to={item.href}
                 >
                   {item.value}

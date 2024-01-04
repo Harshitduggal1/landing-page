@@ -73,7 +73,10 @@ export const Reviews: FC = ({}) => {
       <div className="container">
         <section className={`${s.wrapper} py-20 sm:py-32`}>
           <div className={`${s.header} text-left md:text-center mb-20`}>
-            <h2 style={font.style} className="text-black mb-5 tracking-tight">
+            <h2
+              style={font.style}
+              className="text-black mb-5 tracking-tight text-4xl md:text-5xl"
+            >
               Loved by businesses world wide.{" "}
             </h2>
             <p className="text-lg max-w-screen-md m-auto leading-8 text-slate-700 tracking-tight">

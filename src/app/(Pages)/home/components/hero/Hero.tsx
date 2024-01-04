@@ -30,10 +30,10 @@ export const Hero: FC = ({}) => {
     <section className={`${s.hero} `}>
       <div className="container">
         <section className={s.wrapper}>
-          <article className={`${s.content} py-40`}>
+          <article className={`${s.content} py-32 sm:py-40`}>
             <h1
               style={font.style}
-              className="relative text-black mx-auto max-w-4xl tracking-tight font-medium"
+              className="relative text-black mx-auto max-w-4xl tracking-tight font-medium text-balance"
             >
               Accounting{" "}
               <span className="relative whitespace-nowrap lg:whitespace-normal">
@@ -56,7 +56,7 @@ export const Hero: FC = ({}) => {
               </span>{" "}
               for small businesses.
             </h1>
-            <p className="mt-6 mx-auto max-w-xl text-lg tracking-tight text-slate-700">
+            <p className="mt-6 mx-auto max-w-xl text-md sm:text-lg tracking-tight text-slate-700">
               Most bookkeeping software is accurate, but hard to use. We make
               the opposite trade-off, and hope you don’t get audited.
             </p>

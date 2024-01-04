@@ -3,6 +3,16 @@
         display: grid;
         grid-template-columns: 600px 1fr;
         .wrapperForm {
+            // Scroll-bar
+            &::-webkit-scrollbar {
+                background-color: #fff;
+                width: 10px;
+            }
+            &::-webkit-scrollbar-thumb {
+                background-color: rgba($color: #f4f4f4, $alpha: 1);
+                border-radius: 10px;
+                border: 3px solid #fff;
+            }
             .logo {
                 display: grid;
                 grid-column-gap: 10px;
