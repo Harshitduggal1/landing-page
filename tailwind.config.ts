@@ -14,6 +14,10 @@ const config: Config = {
         blue: "#2563EB",
         gray: "#64748B",
       },
+      gridTemplateColumns: {
+        "4-auto": "repeat(4,auto)",
+        "2-auto": "repeat(2,auto)",
+      },
     },
   },
   plugins: [nextui()],

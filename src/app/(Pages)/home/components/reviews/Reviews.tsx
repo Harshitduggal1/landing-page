@@ -1,7 +1,10 @@
+"use client";
 // React
 import { FC } from "react";
 // Styles
 import s from "./styles/Reviews.module.scss";
+// Animation
+import { motion } from "framer-motion";
 // Next
 import Image from "next/image";
 // Font
@@ -68,28 +71,62 @@ export const Reviews: FC = ({}) => {
       ],
     },
   ];
+  // Animation
+  const animation = {
+    hidden: {
+      y: -20,
+      opacity: 0,
+    },
+    visible: (custom: number) => ({
+      y: 0,
+      opacity: 1,
+      transition: { delay: custom * 0.1, duration: 0.3, ease: "easeOut" },
+    }),
+  };
   return (
-    <section id="testimonials" className={`${s.reviews} bg-slate-50`}>
+    <section
+      id="testimonials"
+      className={`${s.reviews} bg-slate-50 py-20 sm:py-32`}
+    >
       <div className="container">
-        <section className={`${s.wrapper} py-20 sm:py-32`}>
-          <div className={`${s.header} text-left md:text-center mb-20`}>
-            <h2
+        <section className={`${s.wrapper} `}>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ amount: 0.2, once: true }}
+            className={`${s.header} text-left md:text-center mb-20`}
+          >
+            <motion.h2
+              custom={1}
+              variants={animation}
               style={font.style}
-              className="text-black mb-5 tracking-tight text-4xl md:text-5xl"
+              className="text-black mb-5 tracking-tight text-3xl md:text-5xl "
             >
               Loved by businesses world wide.{" "}
-            </h2>
-            <p className="text-lg max-w-screen-md m-auto leading-8 text-slate-700 tracking-tight">
+            </motion.h2>
+            <motion.p
+              custom={2}
+              variants={animation}
+              className="text-lg max-w-screen-md m-auto leading-8 text-slate-700 tracking-tight"
+            >
               Our software is so simple that people can’t help but fall in love
               with it. Simplicity is easy when you just skip tons of
               mission-critical features.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
           <div
             className={`${s.cards} mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 sm:gap-8 lg:mt-20 lg:max-w-none lg:grid-cols-3`}
           >
             {REVIEWS_DATA.map((card, i) => (
-              <li key={i} className="flex flex-col gap-y-6 sm:gap-y-8">
+              <motion.li
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ amount: 0.2, once: true }}
+                variants={animation}
+                custom={i}
+                key={i}
+                className="flex flex-col gap-y-6 sm:gap-y-8"
+              >
                 {card.card.map((data, i) => (
                   <article
                     key={i}
@@ -127,7 +164,7 @@ export const Reviews: FC = ({}) => {
                     </div>
                   </article>
                 ))}
-              </li>
+              </motion.li>
             ))}
           </div>
         </section>

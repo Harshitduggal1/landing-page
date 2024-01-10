@@ -78,6 +78,7 @@ const SignUp: FC = ({}) => {
               />
               <Input
                 isRequired
+                style={{ fontSize: "16px" }}
                 fullWidth
                 type="text"
                 label="Last name"

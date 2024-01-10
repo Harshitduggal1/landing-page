@@ -13,7 +13,8 @@ const inter = Inter({
 import { NextUiProvider } from "@/providers/NextUiProvider";
 export const metadata: Metadata = {
   title: "TaxPal",
-  description: "",
+  description:
+    "Most bookkeeping software is accurate, but hard to use. We make the opposite trade-off, and hope you don’t get audited.",
 };
 
 export default function RootLayout({

@@ -1,6 +1,8 @@
 "use client";
 // React
 import { FC, useEffect, useState } from "react";
+// Animation
+import { motion } from "framer-motion";
 // Styles
 import s from "./styles/Header.module.scss";
 // Next
@@ -29,7 +31,6 @@ export const Header: FC = ({}) => {
   let hideNavigation = pathName === "signIn" || pathName === "signUp";
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScroll, setScroll] = useState(false);
-  const [isActive, setActive] = useState(false);
 
   // Data
   const DATA_LINKS = [
@@ -52,12 +53,23 @@ export const Header: FC = ({}) => {
       }
     });
   }, [isScroll]);
-
+  // Animation
+  const animation = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: (custom: number) => ({
+      opacity: 1,
+      transition: { delay: 0.1, duration: 0.3, ease: "easeOut" },
+    }),
+  };
   return (
     <>
       {!hideNavigation && (
         <Navbar
-          className={` ${s.navBar}  shadow-sm shadow-black/10  `}
+          className={` ${s.navBar}  ${
+            isScroll ? "shadow-sm shadow-black/10" : ""
+          }  `}
           isBlurred={!isMenuOpen}
           shouldHideOnScroll
           disableAnimation
@@ -67,7 +79,13 @@ export const Header: FC = ({}) => {
           height={"4.5em"}
         >
           <div className="container">
-            <section className={s.wrapper}>
+            <motion.section
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={animation}
+              className={s.wrapper}
+            >
               <nav className={s.nav}>
                 <ScrollLink
                   className={`${s.logo} hover:opacity-80 transition-opacity cursor-pointer`}
@@ -119,7 +137,7 @@ export const Header: FC = ({}) => {
                 {/* BurgerMenu */}
                 <NavbarMenuToggle className="sm:hidden" />
               </div>
-            </section>
+            </motion.section>
           </div>
           {/* ToggleMenu */}
           <NavbarMenu className={`navbarMenu pt-5 bg-slate-50`}>

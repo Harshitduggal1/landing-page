@@ -1,7 +1,10 @@
+"use client";
 // React
 import { FC } from "react";
 // Styles
 import s from "./styles/FAQ.module.scss";
+// Animation
+import { motion } from "framer-motion";
 // Next
 import Image from "next/image";
 // Font
@@ -63,6 +66,18 @@ export const FAQ: FC = ({}) => {
       ],
     },
   ];
+  // Animation
+  const animation = {
+    hidden: {
+      y: -20,
+      opacity: 0,
+    },
+    visible: (custom: number) => ({
+      y: 0,
+      opacity: 1,
+      transition: { delay: custom * 0.1, duration: 0.3, ease: "easeOut" },
+    }),
+  };
   return (
     <section className={`${s.faq} relative overflow-hidden bg-slate-50`}>
       <Image
@@ -74,21 +89,40 @@ export const FAQ: FC = ({}) => {
       />
       <div className="container">
         <section className={`${s.wrapper} relative z-10  py-20 sm:py-32`}>
-          <div className={`${s.header} text-left  mb-20`}>
-            <h2
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ amount: 0.2, once: true }}
+            className={`${s.header} text-left  mb-20`}
+          >
+            <motion.h2
+              custom={1}
+              variants={animation}
               style={font.style}
-              className="text-black mb-5 tracking-tight text-4xl md:text-5xl"
+              className="text-black mb-5 tracking-tight text-3xl md:text-5xl "
             >
               Frequently asked questions
-            </h2>
-            <p className="text-lg max-w-screen-sm leading-8 text-slate-700 tracking-tight">
+            </motion.h2>
+            <motion.p
+              custom={2}
+              variants={animation}
+              className="text-lg max-w-screen-sm leading-8 text-slate-700 tracking-tight"
+            >
               If you can’t find what you’re looking for, email our support team
               and if you’re lucky someone will get back to you.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
           <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 sm:gap-8 lg:mt-20 lg:max-w-none lg:grid-cols-3">
             {FAQ_DATA.map((card, i) => (
-              <li key={i} className="flex flex-col gap-y-8">
+              <motion.li
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ amount: 0.2, once: true }}
+                custom={i}
+                variants={animation}
+                key={i}
+                className="flex flex-col gap-y-8"
+              >
                 {card.card.map((data, i) => (
                   <article key={i} className={`${s.card} `}>
                     <h5 className="text-black font-medium text-lg">
@@ -97,7 +131,7 @@ export const FAQ: FC = ({}) => {
                     <p className="text-slate-700 mt-3 text-sm">{data.text}</p>
                   </article>
                 ))}
-              </li>
+              </motion.li>
             ))}
           </div>
         </section>

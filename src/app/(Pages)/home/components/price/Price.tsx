@@ -1,6 +1,10 @@
 "use client";
+// React
 import { FC } from "react";
+// Styles
 import s from "./styles/Price.module.scss";
+// Animation
+import { motion } from "framer-motion";
 // Icons
 import { CheckCircle2 } from "lucide-react";
 // Font
@@ -52,16 +56,33 @@ export const Price: FC = ({}) => {
       ],
     },
   ];
+  // Animation
+  const animation = {
+    hidden: {
+      y: -20,
+      opacity: 0,
+    },
+    visible: (custom: number) => ({
+      y: 0,
+      opacity: 1,
+      transition: { delay: custom * 0.1, duration: 0.3, ease: "easeOut" },
+    }),
+  };
   return (
-    <section id="price" className={`${s.price} bg-slate-900`}>
+    <section id="price" className={`${s.price} bg-slate-900 py-20 sm:py-32`}>
       <div className={`${s.container}`}>
-        <section className={`${s.wrapper} py-20 sm:py-32`}>
-          <div
-            className={`${s.header} text-left md:text-center mb-20 px-5 md:px-0`}
+        <section className={`${s.wrapper}`}>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ amount: 0.2, once: true }}
+            className={`${s.header} text-left md:text-center mb-16 md:mb-20 px-5 md:px-0`}
           >
-            <h2
+            <motion.h2
+              custom={1}
+              variants={animation}
               style={font.style}
-              className="relative text-white mb-5 tracking-tight font-normal text-4xl md:text-5xl"
+              className="relative text-white mb-5 tracking-tight font-normal text-3xl md:text-5xl "
             >
               <span className="relative whitespace-nowrap lg:whitespace-normal">
                 <svg
@@ -76,15 +97,24 @@ export const Price: FC = ({}) => {
                 <span className="relative z-20 ">Simple pricing</span>
               </span>{" "}
               for everyone.
-            </h2>
-            <p className="text-lg max-w-screen-md m-auto leading-8 text-slate-400 ">
+            </motion.h2>
+            <motion.p
+              custom={2}
+              variants={animation}
+              className="text-lg max-w-screen-md m-auto leading-8 text-slate-400 "
+            >
               It doesn’t matter what size your business is, our software won’t
               work well for you.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
           <div className={s.cards}>
             {DATA_CARDS.map((card, i) => (
-              <article
+              <motion.article
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ amount: 0.2, once: true }}
+                variants={animation}
+                custom={i}
                 key={i}
                 className={`${s.card} text-white even:bg-blue even:rounded-3xl px-6 sm:px-8 py-8 even:shadow-lg`}
               >
@@ -108,7 +138,7 @@ export const Price: FC = ({}) => {
                     </li>
                   ))}
                 </ul>
-              </article>
+              </motion.article>
             ))}
           </div>
         </section>

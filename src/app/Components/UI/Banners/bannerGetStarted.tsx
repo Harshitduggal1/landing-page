@@ -1,7 +1,10 @@
 "use client";
 import { FC } from "react";
+// Animation
+import { motion } from "framer-motion";
 // Components
 import { ButtonLink } from "../Button/buttonLink";
+// Next
 import Image from "next/image";
 // Font
 import { Lexend } from "next/font/google";
@@ -10,9 +13,19 @@ const font = Lexend({
   weight: ["400", "500"],
 });
 
-type TBannerGetStarted = {};
-
 export const BannerGetStarted: FC = ({}) => {
+  // Animation
+  const animation = {
+    hidden: {
+      y: -20,
+      opacity: 0,
+    },
+    visible: (custom: number) => ({
+      y: 0,
+      opacity: 1,
+      transition: { delay: custom * 0.1, duration: 0.3, ease: "easeOut" },
+    }),
+  };
   return (
     <section className={"relative"}>
       <Image
@@ -24,7 +37,13 @@ export const BannerGetStarted: FC = ({}) => {
       />
       <div className="container">
         <section className="relative z-10 grid place-items-center py-20">
-          <article className="text-center ">
+          <motion.article
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ amount: 0.2, once: true }}
+            variants={animation}
+            className="text-center "
+          >
             <h2 style={font.style} className="text-white text-4xl ">
               Get started today
             </h2>
@@ -37,7 +56,7 @@ export const BannerGetStarted: FC = ({}) => {
               styles="bg-white text-black rounded-full font-semibold"
               value="Get started today"
             />
-          </article>
+          </motion.article>
         </section>
       </div>
     </section>
