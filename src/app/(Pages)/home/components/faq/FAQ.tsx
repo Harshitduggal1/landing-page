@@ -79,7 +79,10 @@ export const FAQ: FC = ({}) => {
     }),
   };
   return (
-    <section className={`${s.faq} relative overflow-hidden bg-slate-50`}>
+    <section
+      id="faq"
+      className={`${s.faq} relative overflow-hidden bg-slate-50`}
+    >
       <Image
         src={"/bgFaq.svg"}
         width={1500}

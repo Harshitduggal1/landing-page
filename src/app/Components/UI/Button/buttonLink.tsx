@@ -5,12 +5,13 @@ type TButtonLink = {
   value: string;
   href: string;
   styles: string;
+  size: "sm" | "md" | "lg";
 };
 
-export const ButtonLink: FC<TButtonLink> = ({ href, value, styles }) => {
+export const ButtonLink: FC<TButtonLink> = ({ href, value, styles, size }) => {
   return (
     <>
-      <Button className={styles} href={href} as={Link}>
+      <Button size={size} className={styles} href={href} as={Link}>
         {value}
       </Button>
     </>

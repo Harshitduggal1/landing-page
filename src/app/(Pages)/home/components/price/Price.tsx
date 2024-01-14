@@ -126,6 +126,7 @@ export const Price: FC = ({}) => {
                 </h5>
                 <p className="text-md  leading-7">{card.text}</p>
                 <ButtonLink
+                  size="md"
                   value="Get Started"
                   styles="w-full rounded-full bg-white text-black font-semibold my-8"
                   href="/signUp"

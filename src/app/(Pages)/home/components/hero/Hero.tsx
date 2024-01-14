@@ -84,6 +84,7 @@ export const Hero: FC = ({}) => {
               className={`${s.actions} mt-6`}
             >
               <ButtonLink
+                size="md"
                 value="Get 6 months free"
                 styles=" shadow-md bg-black text-white font-medium rounded-full mr-5"
                 href="/signUp"

@@ -21,6 +21,7 @@ import {
 import { Link as ScrollLink } from "react-scroll";
 // Font
 import { Lexend } from "next/font/google";
+import { BannerAdvertising } from "../UI/Banners/bannerAdvertising";
 const font = Lexend({
   subsets: ["latin"],
   weight: ["500"],
@@ -37,11 +38,13 @@ export const Header: FC = ({}) => {
     { value: "Features", href: "features" },
     { value: "Testimonials", href: "testimonials" },
     { value: "Pricing", href: "price" },
+    { value: "FAQ", href: "faq" },
   ];
   const DATA_TOGGLE_MENU = [
     { value: "Features", href: "features" },
     { value: "Testimonials", href: "testimonials" },
     { value: "Pricing", href: "price" },
+    { value: "FAQ", href: "faq" },
   ];
   // SetScroll
   useEffect(() => {
@@ -65,6 +68,7 @@ export const Header: FC = ({}) => {
   };
   return (
     <>
+      <BannerAdvertising />
       {!hideNavigation && (
         <Navbar
           className={` ${s.navBar}  ${
