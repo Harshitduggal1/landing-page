@@ -111,7 +111,7 @@ export const Features: FC = ({}) => {
               ],
               tabList: [
                 "grid",
-                "grid-cols-4-auto",
+                "grid-cols-2-auto",
                 "gap-3",
                 "md:gap-5",
                 "md:grid-cols-4-auto",

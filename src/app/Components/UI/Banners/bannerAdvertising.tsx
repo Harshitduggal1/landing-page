@@ -6,13 +6,13 @@ import { GoArrowRight, GoX } from "react-icons/go";
 import Link from "next/link";
 // Font
 import { Lexend } from "next/font/google";
-
 const font = Lexend({
   subsets: ["latin"],
   weight: ["300", "400", "500"],
 });
 export const BannerAdvertising: FC = ({}) => {
   const [isClose, setClose] = useState(true);
+  const getFullYear = new Date().getFullYear();
   useEffect(() => {
     const storedValue = window.localStorage.getItem("banner");
     if (storedValue !== null) {
@@ -22,7 +22,6 @@ export const BannerAdvertising: FC = ({}) => {
   useEffect(() => {
     localStorage.setItem("banner", JSON.stringify(isClose));
   }, [isClose]);
-  const getFullYear = new Date().getFullYear();
 
   return (
     <>
