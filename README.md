@@ -1,4 +1,4 @@
-# [TaxPal | Landing Page](https://tax-pal-landing-page.vercel.app/)
+# [TaxPal | NextJs](https://tax-pal-landing-page.vercel.app/)
 
 `📋 This is a beautiful and very simple Tailwind CSS landing page.`
 
