@@ -1,5 +1,13 @@
-# [TaxPal | Landing Page](https://tax-pal-landing-page.vercel.app/)
+    # [TaxPal | Landing Page](https://tax-pal-landing-page.vercel.app/)
 
-NextJs | TypeScript | TailwindCSS | SCSS | NextUI
+`📋 This is a beautiful and very simple Tailwind CSS landing page.`
 
-![Image](./public/TaxPalBanner.png)
+## 🛠 Skills
+
+This project is used by the following skills:
+
+**Technologies:** `React`, `NextJs`, `TypeScript`, `SCSS`
+
+**Libraries:** `Tailwind CSS`, `NextUI`
+
+![Banner](./public/TaxPalBanner.png)
