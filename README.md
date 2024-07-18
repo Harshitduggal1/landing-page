@@ -8,6 +8,6 @@ This project is used by the following skills:
 
 **Technologies:** `React`, `NextJs`, `TypeScript`, `SCSS`
 
-**Libraries:** `Tailwind CSS`, `NextUI`
+**Libraries:** `Tailwind CSS`, `NextUI`, `Framer Motion`
 
 ![Banner](./public/TaxPalBanner.png)
