@@ -4,7 +4,7 @@ Welcome to the TaxPal project repository! We are here to show you an incredible 
 
 ![Banner](./public/TaxPalBanner.png)
 
-## 🤖 About Express
+## 🤖 About TaxPal
 `📋 This is a beautiful and very simple Tailwind CSS landing page.`
 
 ## 🛠 Technologies Used
