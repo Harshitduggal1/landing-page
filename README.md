@@ -2,7 +2,7 @@
 
 Welcome to the TaxPal project repository! We are here to show you an incredible landing page for Accounting!
 
-![Banner](./public/TaxPalBanner.png)
+[![Banner](./public/TaxPalBanner.png)](https://tailwindcss.com/)
 
 ## 🤖 About TaxPal
 📋 This is a beautiful and very simple Tailwind CSS landing page.
