@@ -1,4 +1,4 @@
-## TaxPal | NextJs
+## <h3 align="center">TaxPal | NextJs</h3>
 
 Welcome to the TaxPal project repository! We are here to show you an incredible landing page for Accounting!
 
