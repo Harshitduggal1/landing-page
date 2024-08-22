@@ -5,19 +5,20 @@ Welcome to the TaxPal project repository! We are here to show you an incredible 
 ![Banner](./public/TaxPalBanner.png)
 
 ## 🤖 About TaxPal
-`📋 This is a beautiful and very simple Tailwind CSS landing page.`
+📋 This is a beautiful and very simple Tailwind CSS landing page.
 
 ## 🛠 Technologies Used
 
 We've assembled quite the tech stack to bring Express to life:
 
-- `React`
-- `NextJs`
-- `TypeScript`
-- `SCSS`
+- [React](https://react.dev/)
+- [NextJs](https://nextjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Scss](https://sasscss.org/)
+- 
 
-**Libraries:** `Tailwind CSS`, `NextUI`, `Framer Motion`
-
+**Libraries:** [`TailwindCss`](https://tailwindcss.com/), [`NextUI`](https://nextui.org/),[`Framer Motion`](https://www.framer.com/motion/)
+  
 ## 🚀 Getting Started
 
 - Clone the repository
