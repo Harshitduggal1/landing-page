@@ -2,7 +2,7 @@
 <h4 align="center">Welcome to the TaxPal project repository! We are here to show you an incredible landing page for Accounting!</h3>
 
 
-[![Banner](./public/TaxPalBanner.png)](https://tailwindcss.com/)
+[![Banner](./public/TaxPalBanner.png)](https://tax-pal-landing-page.vercel.app)
 
 ## 🤖 About TaxPal
 📋 This is a beautiful and very simple Tailwind CSS landing page.
