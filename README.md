@@ -1,4 +1,4 @@
-# [TaxPal | NextJs](https://tax-pal-landing-page.vercel.app/)
+## TaxPal | NextJs
 
 Welcome to the TaxPal project repository! We are here to show you an incredible landing page for Accounting!
 
