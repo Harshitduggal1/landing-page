@@ -6,7 +6,7 @@
 [![Banner](./public/TaxPalBanner.png)](https://tax-pal-landing-page.vercel.app)
 
 ## 🤖 About TaxPal
-📋 This is a beautiful and very simple Tailwind CSS landing page.
+This is a beautiful and very simple Tailwind CSS landing page.
 
 ## 🛠 Technologies Used
 
