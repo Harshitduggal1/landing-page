@@ -59,11 +59,12 @@ export const Footer: FC = ({}) => {
             </section>
             <div className={`${s.copyright} border-t-1 border-slate-200 py-10`}>
               <p className="text-sm text-slate-500 ">
-                Copyright © {getFullYear} TaxPal. All rights reserved.
+                Copyright © {getFullYear} TaxPal. Kirill H
               </p>
               <div className={s.social}>
                 <Tooltip content="Twitter" size="sm">
                   <Link
+                    target="_blank"
                     className="text-slate-400 hover:text-slate-600"
                     href={""}
                   >
@@ -72,8 +73,9 @@ export const Footer: FC = ({}) => {
                 </Tooltip>
                 <Tooltip content="GitHub" size="sm">
                   <Link
+                    target="_blank"
                     className="text-slate-400 hover:text-slate-600"
-                    href={""}
+                    href={"https://github.com/Kirill-H-FrontEnd"}
                   >
                     <FaGithub size={22} />
                   </Link>

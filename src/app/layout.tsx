@@ -11,6 +11,7 @@ const inter = Inter({
   weight: ["400", "500", "600", "700", "800"],
 });
 import { NextUiProvider } from "@/providers/NextUiProvider";
+import { InfoModal } from "./Components/UI/Modals/info-modal";
 export const metadata: Metadata = {
   title: "TaxPal",
   description:
@@ -30,6 +31,7 @@ export default function RootLayout({
             <Header />
             <main>{children}</main>
             <Footer />
+            <InfoModal />
           </NextUiProvider>
         </div>
       </body>
