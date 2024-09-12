@@ -4,13 +4,21 @@ import { ButtonLink } from "../Button/buttonLink";
 import { Github, Linkedin, X } from "lucide-react";
 import s from "./info-modal.module.scss";
 export const InfoModal: FC = ({}) => {
-  const [isClose, setClose] = useState(() => {
-    const storedValue = window.localStorage.getItem("info-modal");
-    return storedValue !== null ? JSON.parse(storedValue) : true;
-  });
+  const [isClose, setClose] = useState(true);
 
   useEffect(() => {
-    window.localStorage.setItem("info-modal", JSON.stringify(isClose));
+    if (typeof window !== "undefined") {
+      const storedValue = window.localStorage.getItem("info-modal");
+      if (storedValue !== null) {
+        setClose(JSON.parse(storedValue));
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem("info-modal", JSON.stringify(isClose));
+    }
   }, [isClose]);
 
   return (
