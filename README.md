@@ -1,8 +1,7 @@
-Here's an ultra-professional and detailed README for your project, **FINANCIFY.IO**, that includes sections for setup, usage, and commands, all presented in a clean and informative format:
-
----
 
 # FINANCIFY.IO
+<img width="1440" alt="Screenshot 2024-10-04 at 19 23 22" src="https://github.com/user-attachments/assets/98b1fd10-ad54-449a-a88f-9f95159674d4">
+
 
 ![FINANCIFY.IO](https://github.com/user-attachments/assets/88c3ce97-5d41-4d55-bd6e-7118683dc5cc)
 
@@ -79,27 +78,6 @@ cd landing-page
 pnpm install
 ```
 
-4. **Set up the environment variables:**
-
-Create a `.env` file in the root directory and add your environment variables. The project uses PostgreSQL, so make sure to configure your database connection string as follows:
-
-```bash
-DATABASE_URL="your_postgresql_connection_string"
-```
-
-5. **Generate the Prisma client:**
-
-```bash
-pnpm prisma generate
-```
-
-6. **Migrate your database:**
-
-```bash
-pnpm prisma migrate dev
-```
-
----
 
 ## Usage
 
