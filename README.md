@@ -150,6 +150,6 @@ Enjoy financial freedom with **FINANCIFY.IO** – the sleek and modern way to ma
 
 This detailed README should set the perfect tone for professionalism and clarity while providing all the necessary information for anyone working with FINANCIFY.IO!
 
-![image](https://github.com/user-attachments/assets/88c3ce97-5d41-4d55-bd6e-7118683dc5cc)
+
 
 
