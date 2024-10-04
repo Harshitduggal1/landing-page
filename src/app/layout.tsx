@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import "./Styles/globals.scss";
 // Components
 import { Header } from "./Components/Header/header";
-import { Footer } from "./Components/Footer/footer";
+import Footer  from "./Components/Footer/footer";
 // Font
 import { Inter } from "next/font/google";
 const inter = Inter({

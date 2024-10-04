@@ -3,6 +3,7 @@ import { FC, useEffect, useState } from "react";
 import { ButtonLink } from "../Button/buttonLink";
 import { Github, Linkedin, X } from "lucide-react";
 import s from "./info-modal.module.scss";
+import React from "react";
 export const InfoModal: FC = ({}) => {
   const [isClose, setClose] = useState(true);
 

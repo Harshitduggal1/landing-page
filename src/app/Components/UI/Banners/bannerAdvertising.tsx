@@ -6,6 +6,7 @@ import { GoArrowRight, GoX } from "react-icons/go";
 import Link from "next/link";
 // Font
 import { Lexend } from "next/font/google";
+import React from "react";
 const font = Lexend({
   subsets: ["latin"],
   weight: ["300", "400", "500"],

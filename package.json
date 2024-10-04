@@ -9,19 +9,22 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chakra-ui/react": "^2.9.4",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
     "@nextui-org/react": "^2.2.9",
     "@nextui-org/system": "^2.0.15",
     "@nextui-org/theme": "^2.1.17",
-    "framer-motion": "^10.16.16",
+    "framer-motion": "^11.11.0",
     "lucide-react": "^0.303.0",
     "next": "14.0.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.12.0",
     "react-scroll": "^1.9.0",
-    "sass": "^1.69.6"
+    "sass": "^1.79.4",
+    "sass-loader": "^16.0.2",
+    "scss": "^0.2.4"
   },
   "devDependencies": {
     "@types/node": "^20.10.5",

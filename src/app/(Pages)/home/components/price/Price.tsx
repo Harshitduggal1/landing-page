@@ -1,24 +1,39 @@
 "use client";
-// React
-import { FC } from "react";
-// Styles
+
+import { FC, useState } from "react";
 import s from "./styles/Price.module.scss";
-// Animation
-import { motion } from "framer-motion";
-// Icons
+import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
-// Font
 import { Lexend } from "next/font/google";
-import { ButtonLink } from "@/app/Components/UI/Button/buttonLink";
+
+import { Button } from "@chakra-ui/react";
+import { ButtonProps } from '@chakra-ui/react';
+
+interface ButtonLinkProps extends ButtonProps {
+  href: string;
+}
+const ButtonLink: FC<ButtonLinkProps> = ({ children, href, ...props }) => (
+  <Button as="a" href={href} {...props}>
+    {children}
+  </Button>
+)
+interface ButtonLinkProps {
+  children: string;
+  href: string;
+  className: string;
+}
+
 const font = Lexend({
   subsets: ["latin"],
-  weight: ["300", "400", "500"],
+  weight: ["300", "400", "500", "700"],
 });
 
-export const Price: FC = ({}) => {
+export const Price: FC = () => {
+  const [isYearly, setIsYearly] = useState(false);
+
   const DATA_CARDS = [
     {
-      price: "$9",
+      price: isYearly ? "$90" : "$9",
       title: "Starter",
       text: "Good for anyone who is self-employed and just getting started.",
       list: [
@@ -30,9 +45,9 @@ export const Price: FC = ({}) => {
       ],
     },
     {
-      price: "$15",
+      price: isYearly ? "$150" : "$15",
       title: "Small business",
-      text: "Perfect for small / medium sized usinesses.",
+      text: "Perfect for small / medium sized businesses.",
       list: [
         { value: "Send 25 quotes and invoices" },
         { value: "Connect up to 5 bank accounts" },
@@ -44,7 +59,7 @@ export const Price: FC = ({}) => {
       ],
     },
     {
-      price: "$39",
+      price: isYearly ? "$390" : "$39",
       title: "Enterprise",
       text: "For even the biggest enterprise companies.",
       list: [
@@ -56,94 +71,179 @@ export const Price: FC = ({}) => {
       ],
     },
   ];
-  // Animation
-  const animation = {
-    hidden: {
-      y: -20,
-      opacity: 0,
+
+  const containerAnimation = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.3,
+      },
     },
-    visible: (custom: number) => ({
+  };
+
+  const itemAnimation = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
       y: 0,
       opacity: 1,
-      transition: { delay: custom * 0.1, duration: 0.3, ease: "easeOut" },
-    }),
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 10,
+      },
+    },
   };
+
+  const cardAnimation = {
+    hidden: { scale: 0.8, opacity: 0 },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 10,
+      },
+    },
+  };
+
+  const gradientTextStyle = {
+    backgroundClip: "text",
+    WebkitBackgroundClip: "text",
+    color: "transparent",
+    backgroundImage: "linear-gradient(to right, #4F46E5, #06B6D4)",
+  };
+
   return (
-    <section id="price" className={`${s.price} bg-slate-900 py-20 sm:py-32`}>
-      <div className={`${s.container}`}>
+    <motion.section
+      initial="hidden"
+      animate="visible"
+      variants={containerAnimation}
+      id="price"
+      className={`${s.price} bg-gradient-to-br from-slate-900 to-indigo-900 py-20 sm:py-32 overflow-hidden`}
+    >
+      <div className={`${s.container} max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`}>
         <section className={`${s.wrapper}`}>
           <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ amount: 0.2, once: true }}
-            className={`${s.header} text-left md:text-center mb-16 md:mb-20 px-5 md:px-0`}
+            variants={itemAnimation}
+            className={`${s.header} text-center mb-16 md:mb-20`}
           >
             <motion.h2
-              custom={1}
-              variants={animation}
-              style={font.style}
-              className="relative text-white mb-5 tracking-tight font-normal text-3xl md:text-5xl "
+              style={{ ...font.style, ...gradientTextStyle }}
+              className="text-4xl md:text-6xl font-bold mb-5 tracking-tight text-white"  
+              variants={itemAnimation}
             >
-              <span className="relative whitespace-nowrap lg:whitespace-normal">
-                <svg
-                  fill="#60A5FA"
-                  aria-hidden="true"
-                  viewBox="0 0 281 40"
-                  preserveAspectRatio="none"
-                  className="absolute left-0 top-1/2 h-[1em] w-full fill-blue-400"
-                >
-                  <path d="M240.172 22.994c-8.007 1.246-15.477 2.23-31.26 4.114-18.506 2.21-26.323 2.977-34.487 3.386-2.971.149-3.727.324-6.566 1.523-15.124 6.388-43.775 9.404-69.425 7.31-26.207-2.14-50.986-7.103-78-15.624C10.912 20.7.988 16.143.734 14.657c-.066-.381.043-.344 1.324.456 10.423 6.506 49.649 16.322 77.8 19.468 23.708 2.65 38.249 2.95 55.821 1.156 9.407-.962 24.451-3.773 25.101-4.692.074-.104.053-.155-.058-.135-1.062.195-13.863-.271-18.848-.687-16.681-1.389-28.722-4.345-38.142-9.364-15.294-8.15-7.298-19.232 14.802-20.514 16.095-.934 32.793 1.517 47.423 6.96 13.524 5.033 17.942 12.326 11.463 18.922l-.859.874.697-.006c2.681-.026 15.304-1.302 29.208-2.953 25.845-3.07 35.659-4.519 54.027-7.978 9.863-1.858 11.021-2.048 13.055-2.145a61.901 61.901 0 0 0 4.506-.417c1.891-.259 2.151-.267 1.543-.047-.402.145-2.33.913-4.285 1.707-4.635 1.882-5.202 2.07-8.736 2.903-3.414.805-19.773 3.797-26.404 4.829Zm40.321-9.93c.1-.066.231-.085.29-.041.059.043-.024.096-.183.119-.177.024-.219-.007-.107-.079ZM172.299 26.22c9.364-6.058 5.161-12.039-12.304-17.51-11.656-3.653-23.145-5.47-35.243-5.576-22.552-.198-33.577 7.462-21.321 14.814 12.012 7.205 32.994 10.557 61.531 9.831 4.563-.116 5.372-.288 7.337-1.559Z"></path>
-                </svg>
-                <span className="relative z-20 ">Simple pricing</span>
-              </span>{" "}
-              for everyone.
+              Simple pricing for everyone
             </motion.h2>
             <motion.p
-              custom={2}
-              variants={animation}
-              className="text-lg max-w-screen-md m-auto leading-8 text-slate-400 "
+              variants={itemAnimation}
+              className="text-lg md:text-xl max-w-3xl mx-auto leading-8 text-white"
             >
-              It doesn’t matter what size your business is, our software won’t
+              It doesn't matter what size your business is, our software won't
               work well for you.
             </motion.p>
           </motion.div>
-          <div className={s.cards}>
-            {DATA_CARDS.map((card, i) => (
-              <motion.article
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ amount: 0.2, once: true }}
-                variants={animation}
-                custom={i}
-                key={i}
-                className={`${s.card} text-white even:bg-blue even:rounded-3xl px-6 sm:px-8 py-8 even:shadow-lg`}
+
+          <motion.div
+            variants={itemAnimation}
+            className="flex justify-center items-center mb-12"
+          >
+            <motion.div
+              className="bg-indigo-800 p-1 rounded-full flex items-center"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <AnimatePresence mode="wait">
+                <motion.button
+                  key={isYearly ? "monthly" : "yearly"}
+                  className={`px-6 py-3 rounded-full text-lg font-medium ${
+                    !isYearly
+                      ? "bg-gradient-to-r from-blue-500 to-indigo-600 text-white"
+                      : "text-gray-300"
+                  }`}
+                  onClick={() => setIsYearly(false)}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  Monthly
+                </motion.button>
+              </AnimatePresence>
+              <AnimatePresence mode="wait">
+                <motion.button
+                  key={isYearly ? "yearly" : "monthly"}
+                  className={`px-6 py-3 rounded-full text-lg font-medium ${
+                    isYearly
+                      ? "bg-gradient-to-r from-blue-500 to-indigo-600 text-white"
+                      : "text-gray-300"
+                  }`}
+                  onClick={() => setIsYearly(true)}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  Yearly
+                </motion.button>
+              </AnimatePresence>
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            variants={containerAnimation}
+            className={`${s.cards} grid grid-cols-1 md:grid-cols-3 gap-8`}
+          >
+            {DATA_CARDS.map((card, index) => (
+              <motion.div
+                key={index}
+                variants={cardAnimation}
+                className="bg-gradient-to-br from-slate-800 to-indigo-900 p-8 rounded-3xl border-2 border-transparent hover:border-indigo-500 shadow-lg transition-all duration-300 ease-in-out"
+                whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(79, 70, 229, 0.4)" }}
               >
-                <h4 style={font.style} className="text-5xl font-light">
-                  {card.price}
-                </h4>
-                <h5 className="my-5 text-lg " style={font.style}>
-                  {card.title}
-                </h5>
-                <p className="text-md  leading-7">{card.text}</p>
-                <ButtonLink
-                  size="md"
-                  value="Get Started"
-                  styles="w-full rounded-full bg-white text-black font-semibold my-8"
-                  href="/signUp"
-                />
-                <ul className="">
-                  {card.list.map((item, i) => (
-                    <li className=" tracking-wide" key={i}>
-                      <CheckCircle2 size={20} />
-                      {item.value}
-                    </li>
+                <motion.div className="text-center" variants={itemAnimation}>
+                  <h3
+                    style={{ ...font.style }}
+                    className="text-2xl font-bold mb-4 text-white/80"
+                  >
+                    {card.title}
+                  </h3>
+                  <p className="text-white/80 mb-6">{card.text}</p>
+                  <p className="text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-500">
+                    {card.price}
+                    <span className="text-lg text-gray-400">
+                      {isYearly ? "/year" : "/month"}
+                    </span>
+                  </p>
+                  <ButtonLink href="/pricing" className="bg-gradient-to-r from-blue-500 via-indigo-600 to-pink-600 text-white font-bold py-3 px-6 rounded-full w-full hover:from-indigo-500 hover:to-blue-500 transition-all duration-300">
+  Get started
+</ButtonLink>
+                </motion.div>
+                <motion.ul className="mt-8 space-y-4" variants={itemAnimation}>
+                  {card.list.map((item, idx) => (
+                    <motion.li
+                      key={idx}
+                      className="text-white/80 flex items-center space-x-2"
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: idx * 0.1 }}
+                    >
+                      <CheckCircle2 className="text-indigo-400 w-5 h-5" />
+                      <span>{item.value}</span>
+                    </motion.li>
                   ))}
-                </ul>
-              </motion.article>
+                </motion.ul>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </section>
       </div>
-    </section>
+    </motion.section>
   );
 };
