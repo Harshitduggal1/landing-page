@@ -35,7 +35,7 @@ const SignIn: FC = ({}) => {
           >
             <Image src={"./Logo.svg"} width={40} height={40} alt="Logo" />
             <h5 style={font.style} className="text-transparent bg-clip-text bg-gradient-to-r from-pink-700 via-purple-500 to-sky-500 text-lg">
-              <span className="bg">financify.io</span>
+              <span className="bg">FINANCIFY.IO</span>
             </h5>
           </Link>
           <h5 className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-sky-500 text-lg font-semibold mb-2">

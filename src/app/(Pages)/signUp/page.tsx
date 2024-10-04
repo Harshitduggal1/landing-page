@@ -40,11 +40,11 @@ const SignUp: FC = ({}) => {
           >
             <Image src={"./Logo.svg"} width={40} height={40} alt="Logo" />
             <h5 style={font.style} className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-sky-500 text-lg">
-              Tax<span className="font-bold">FINANCIFY.IO</span>
+              <span className="font-bold">FINANCIFY.IO</span>
             </h5>
           </Link>
           <h5 className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-sky-500 text-lg font-semibold mb-2">
-            Get started for free
+            Get started for free🥰
           </h5>
           <p className="text-gray text-sm">
             Already registered?{" "}

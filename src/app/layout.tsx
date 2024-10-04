@@ -15,7 +15,7 @@ import { InfoModal } from "./Components/UI/Modals/info-modal";
 export const metadata: Metadata = {
   title: "FINANCIFY.IO",
   description:
-    "Most bookkeeping software is accurate, but hard to use. We make the opposite trade-off, and hope you don’t get audited.",
+    "Most tax software is accurate, but hard to use. We make the opposite trade-off, and hope you don’t get audited.",
 };
 
 export default function RootLayout({
@@ -31,7 +31,7 @@ export default function RootLayout({
           <Header />
             <main>{children}</main>
             <Footer />
-            <InfoModal />
+          <InfoModal />
           </NextUiProvider>
         </div>
       </body>

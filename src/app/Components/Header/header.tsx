@@ -12,7 +12,6 @@ import {
   NavbarMenuItem,
   Button,
 } from "@nextui-org/react";
-import { Link as ScrollLink } from "react-scroll";
 import { Lexend } from "next/font/google";
 import { BannerAdvertising } from "../UI/Banners/bannerAdvertising";
 import React from "react";
@@ -24,7 +23,7 @@ const font = Lexend({
 
 export const Header: FC = () => {
   const pathName = usePathname()?.replace("/", "") || "";
-  let hideNavigation = pathName === "signIn" || pathName === "signUp";
+  const hideNavigation = pathName === "signIn" || pathName === "signUp";
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScroll, setScroll] = useState(false);
 
@@ -41,7 +40,7 @@ export const Header: FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScroll(window.scrollY !== 0);
+      setScroll(window.scrollY > 0);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -113,7 +112,6 @@ export const Header: FC = () => {
         duration: 0.8,
         ease: "easeInOut",
         repeat: Infinity,
-
         repeatType: "reverse" as const
       }
     }
@@ -129,6 +127,7 @@ export const Header: FC = () => {
             animate="visible"
             variants={containerAnimation}
             style={{ opacity: headerOpacity, y: headerY }}
+            className="fixed top-0 left-0 right-0 z-50"
           >
             <Navbar
               className={`transition-all duration-300 ${
@@ -137,7 +136,6 @@ export const Header: FC = () => {
                   : "bg-transparent"
               }`}
               isBlurred={!isMenuOpen}
-              shouldHideOnScroll
               onMenuOpenChange={setIsMenuOpen}
               isMenuOpen={isMenuOpen}
               maxWidth="full"
@@ -151,14 +149,7 @@ export const Header: FC = () => {
               >
                 <div className="flex items-center justify-between h-full">
                   <motion.div variants={itemAnimation} className="flex items-center space-x-2">
-                    <ScrollLink
-                      className="flex items-center space-x-2 cursor-pointer group"
-                      onClick={() => setIsMenuOpen(false)}
-                      to="top"
-                      spy={true}
-                      smooth={true}
-                      duration={800}
-                    >
+                    <Link href="/">
                       <motion.div
                         variants={logoAnimation}
                         initial="hidden"
@@ -173,22 +164,22 @@ export const Header: FC = () => {
                           className="transition-transform duration-300"
                         />
                       </motion.div>
-                      <motion.h5 
-                        className={`${font.className} text-2xl font-bold`}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.5, delay: 0.3 }}
+                    </Link>
+                    <motion.h5 
+                      className={`${font.className} text-2xl font-bold`}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.5, delay: 0.3 }}
+                    >
+                      <motion.span
+                        initial={{ backgroundPosition: "0% 50%" }}
+                        animate={{ backgroundPosition: "100% 50%" }}
+                        transition={{ duration: 5, repeat: Infinity, repeatType: "reverse" }}
+                        className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-sky-500 to-purple-600 bg-300% animate-gradient"
                       >
-                        <motion.span
-                          initial={{ backgroundPosition: "0% 50%" }}
-                          animate={{ backgroundPosition: "100% 50%" }}
-                          transition={{ duration: 5, repeat: Infinity, repeatType: "reverse" }}
-                          className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-sky-500 to-purple-600 bg-300% animate-gradient"
-                        >
-                          FINANFICY<span className="text-sky-600">.IO</span>
-                        </motion.span>
-                      </motion.h5>
-                    </ScrollLink>
+                        FINANFICY<span className="text-sky-600">.IO</span>
+                      </motion.span>
+                    </motion.h5>
                   </motion.div>
 
                   <motion.nav
@@ -204,20 +195,16 @@ export const Header: FC = () => {
                         animate="rest"
                         whileTap={{ scale: 0.95 }}
                       >
-                        <ScrollLink
+                        <Link
+                          href={`/#${link.href}`}
                           className="px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ease-in-out overflow-hidden group"
-                          activeClass="text-white bg-gradient-to-r from-sky-600 to-purple-600"
-                          to={link.href}
-                          spy={true}
-                          smooth={true}
-                          duration={800}
                         >
                           {link.value}
                           <motion.span
                             className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-sky-600 to-purple-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200 ease-out"
                             layoutId="underline"
                           ></motion.span>
-                        </ScrollLink>
+                        </Link>
                       </motion.div>
                     ))}
                   </motion.nav>
@@ -280,14 +267,10 @@ export const Header: FC = () => {
                       animate="rest"
                       whileTap={{ scale: 0.95 }}
                     >
-                      <ScrollLink
-                        activeClass="text-white bg-gradient-to-r from-sky-600 to-purple-600"
+                      <Link
+                        href={`/#${item.href}`}
                         onClick={() => setIsMenuOpen(false)}
                         className="block py-2 text-base font-medium transition-all duration-200 rounded-md px-3"
-                        to={item.href}
-                        spy={true}
-                        smooth={true}
-                        duration={800}
                       >
                         <motion.span
                           initial={{ opacity: 0, y: 20 }}
@@ -296,7 +279,7 @@ export const Header: FC = () => {
                         >
                           {item.value}
                         </motion.span>
-                      </ScrollLink>
+                      </Link>
                     </motion.div>
                   </NavbarMenuItem>
                 ))}
@@ -307,5 +290,4 @@ export const Header: FC = () => {
       )}
     </>
   );
-
 };

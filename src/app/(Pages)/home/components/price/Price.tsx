@@ -33,7 +33,7 @@ export const Price: FC = () => {
 
   const DATA_CARDS = [
     {
-      price: isYearly ? "$90" : "$9",
+      price: isYearly ? 90 : 9,
       title: "Starter",
       text: "Good for anyone who is self-employed and just getting started.",
       list: [
@@ -45,7 +45,8 @@ export const Price: FC = () => {
       ],
     },
     {
-      price: isYearly ? "$150" : "$15",
+      price: isYearly ? 105 : 10.5,
+      originalPrice: isYearly ? 150 : 15,
       title: "Small business",
       text: "Perfect for small / medium sized businesses.",
       list: [
@@ -57,9 +58,11 @@ export const Price: FC = () => {
         { value: "Bulk reconcile transactions" },
         { value: "Track in multiple currencies" },
       ],
+      recommended: true,
     },
     {
-      price: isYearly ? "$390" : "$39",
+      price: isYearly ? 273 : 27.3,
+      originalPrice: isYearly ? 390 : 39,
       title: "Enterprise",
       text: "For even the biggest enterprise companies.",
       list: [
@@ -116,6 +119,13 @@ export const Price: FC = () => {
     backgroundImage: "linear-gradient(to right, #4F46E5, #06B6D4)",
   };
 
+  const numberAnimation = {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: -20 },
+    transition: { duration: 0.5 }
+  };
+
   return (
     <motion.section
       initial="hidden"
@@ -161,7 +171,7 @@ export const Price: FC = () => {
                   className={`px-6 py-3 rounded-full text-lg font-medium ${
                     !isYearly
                       ? "bg-gradient-to-r from-blue-500 to-indigo-600 text-white"
-                      : "text-gray-300"
+                      : "text-white/90"
                   }`}
                   onClick={() => setIsYearly(false)}
                   whileHover={{ scale: 1.05 }}
@@ -204,9 +214,21 @@ export const Price: FC = () => {
               <motion.div
                 key={index}
                 variants={cardAnimation}
-                className="bg-gradient-to-br from-slate-800 to-indigo-900 p-8 rounded-3xl border-2 border-transparent hover:border-indigo-500 shadow-lg transition-all duration-300 ease-in-out"
+                className={`bg-gradient-to-br from-slate-800 to-indigo-900 p-8 rounded-3xl border-2 border-transparent hover:border-indigo-500 shadow-lg transition-all duration-300 ease-in-out relative ${
+                  card.recommended ? 'border-indigo-500' : ''
+                }`}
                 whileHover={{ scale: 1.05, boxShadow: "0 0 20px rgba(79, 70, 229, 0.4)" }}
               >
+                {card.recommended && (
+                  <motion.div
+                    className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-4 py-1 rounded-full text-sm font-bold"
+                    initial={{ y: -10, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.5 }}
+                  >
+                    Most Recommended
+                  </motion.div>
+                )}
                 <motion.div className="text-center" variants={itemAnimation}>
                   <h3
                     style={{ ...font.style }}
@@ -215,15 +237,58 @@ export const Price: FC = () => {
                     {card.title}
                   </h3>
                   <p className="text-white/80 mb-6">{card.text}</p>
-                  <p className="text-4xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-indigo-500">
-                    {card.price}
-                    <span className="text-lg text-gray-400">
-                      {isYearly ? "/year" : "/month"}
-                    </span>
-                  </p>
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={card.price}
+                      className="text-4xl font-bold mb-2 text-white"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      <motion.span
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.5 }}
+                      >
+                        $
+                      </motion.span>
+                      <motion.span
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.5, delay: 0.1 }}
+                      >
+                        {card.price.toFixed(2)}
+                      </motion.span>
+                      <motion.span
+                        className="text-lg text-gray-400"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.5, delay: 0.2 }}
+                      >
+                        {isYearly ? "/year" : "/month"}
+                      </motion.span>
+                    </motion.div>
+                  </AnimatePresence>
+                  {card.originalPrice && (
+                    <motion.p
+                      className="text-lg text-gray-400 line-through mb-2"
+                      {...numberAnimation}
+                    >
+                      ${card.originalPrice.toFixed(2)}
+                    </motion.p>
+                  )}
+                  {card.originalPrice && (
+                    <motion.p
+                      className="text-lg text-green-400 font-bold mb-4"
+                      {...numberAnimation}
+                    >
+                      30% off
+                    </motion.p>
+                  )}
                   <ButtonLink href="/pricing" className="bg-gradient-to-r from-blue-500 via-indigo-600 to-pink-600 text-white font-bold py-3 px-6 rounded-full w-full hover:from-indigo-500 hover:to-blue-500 transition-all duration-300">
-  Get started
-</ButtonLink>
+                    Get started
+                  </ButtonLink>
                 </motion.div>
                 <motion.ul className="mt-8 space-y-4" variants={itemAnimation}>
                   {card.list.map((item, idx) => (
