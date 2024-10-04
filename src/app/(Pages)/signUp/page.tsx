@@ -39,16 +39,16 @@ const SignUp: FC = ({}) => {
             className={`${s.logo} hover:opacity-80 transition-opacity mb-20 tracking-tight`}
           >
             <Image src={"./Logo.svg"} width={40} height={40} alt="Logo" />
-            <h5 style={font.style} className="text-black  text-lg">
-              Tax<span className="text-blue ">Pal</span>
+            <h5 style={font.style} className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-sky-500 text-lg">
+              Tax<span className="font-bold">FINANCIFY.IO</span>
             </h5>
           </Link>
-          <h5 className="text-black text-lg font-semibold mb-2">
+          <h5 className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-sky-500 text-lg font-semibold mb-2">
             Get started for free
           </h5>
           <p className="text-gray text-sm">
             Already registered?{" "}
-            <Link className="text-blue font-medium" href={"/signIn"}>
+            <Link className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-sky-500 font-medium" href={"/signIn"}>
               Sign in
             </Link>{" "}
             to your account.
