@@ -19,7 +19,7 @@ export const HomePage = ({}) => {
       <BannerGetStarted />
       <BannerAdvertising />
       <Reviews />
-      <Footer/>
+
 
 
     </>
