@@ -36,13 +36,13 @@ export const InfoModal: FC = ({}) => {
           <h5 className="mt-4 mb-2">⚡Social and Source: </h5>
           <div className="grid sm:grid-cols-2 gap-2 ">
             <ButtonLink
-              href="https://github.com/Kirill-H-FrontEnd"
+              href="https://github.com/harshitduggal1"
               size="md"
               styles="rounded-full bg-[#221F1E] text-white"
               value={<Github size={20} />}
             />
             <ButtonLink
-              href="https://www.linkedin.com/in/kirill-h"
+              href="https://www.linkedin.com/harshitduggal1"
               size="md"
               styles="rounded-full bg-[#0866C0] text-white"
               value={<Linkedin size={20} />}
