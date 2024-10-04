@@ -8,7 +8,7 @@ import { Lexend } from "next/font/google";
 import { Button, ButtonProps } from "@chakra-ui/react";
 import PricingComparisonTable from "./PricingTable";
 import React from "react";
-import RetroGri from "./Retrogrid";
+import {RetroGri} from "./Retrogrid";
 
 interface ButtonLinkProps extends ButtonProps {
   href: string;

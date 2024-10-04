@@ -146,7 +146,7 @@ const PricingComparisonTable = () => {
         whileHover="hover"
         animate={controls}
         variants={glowVariants}
-        className="w-full overflow-x-auto bg-gradient-to-br from-blue-800 via-purple-700-500 to-pink-500 p-6 rounded-3xl backdrop-blur-xl transition-all duration-500"
+        className="w-full overflow-x-auto bg-gradient-to-br from-sky-900 via-purple-700 to-pink-500 p-6 rounded-3xl backdrop-blur-xl transition-all duration-500"
       >
         <motion.table 
           className="w-full text-left table-auto"
